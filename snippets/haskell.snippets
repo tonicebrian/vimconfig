@@ -1,0 +1,41 @@
+# Create the main function
+snippet main
+	main :: IO()
+	main = ${1:undefined}
+
+snippet setuphs
+	import Distribution.Simple
+	main = defaultMain
+
+snippet maintest
+	import Test.Framework (defaultMain, testGroup, Test)
+	import Test.Framework.Providers.QuickCheck2 (testProperty)
+	import Test.Framework.Providers.HUnit (testCase)
+
+	import Test.QuickCheck
+	import Test.HUnit
+
+	import ${1:yourModule}
+
+	tests = [
+		testGroup "cases" $ zipWith (testCase . show) [1::Int ..] $
+		[ case_${2:theTest}
+		]
+		, testGroup "properties" $ zipWith (testProperty . show) [1::Int ..] $
+			[ property prop_${3:theProperty}]
+		]
+
+	--------------------------------------------------	
+	case_$2 = assertEqual "${4:message}" expected obtained
+		where
+			expected = True
+			obtained = False
+
+	--------------------------------------------------	
+	prop_$3 = True
+
+	-- Main program
+	main = defaultMain tests 
+
+	
+

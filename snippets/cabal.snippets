@@ -1,0 +1,30 @@
+snippet cabal
+	Name:               ${1:name}
+	Version:            ${2:version}
+	Description:        ${3:description}
+	License:            GPL-3
+	License-file:       LICENSE
+	Author:             Toni Cebrián
+	Maintainer:         ${4:your@mail.com}
+	Build-Type:         Simple
+	Cabal-Version:      >=1.8
+	executable ${5:execName}
+	  main-is:          Main.hs
+	  ghc-options:      -threaded -rtsopts -O2
+	  ghc-prof-options: -prof -caf-all -auto-all
+	  Build-Depends:    base >= 4,
+	                    containers >= 0.4
+	  hs-source-dirs:   src
+	
+	test-suite test-$5
+	    type:           exitcode-stdio-1.0
+	    main-is:        Test.hs
+	    hs-source-dirs: test src
+	    ghc-options:    
+	    build-depends:  base >= 4,
+	                    QuickCheck >= 2.4,
+	                    HUnit >= 1.0,
+	                    test-framework >= 0.2,
+	                    test-framework-quickcheck2 >= 0.2,
+	                    test-framework-hunit >= 0.2
+

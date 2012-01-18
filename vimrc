@@ -2,6 +2,9 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Numbering
+set nu
+
 " Folding
 set foldmethod=indent
 set foldlevel=99
@@ -25,6 +28,9 @@ filetype plugin indent on    " enable loading indent file for filetype
 set expandtab
 set tabstop=4
 set shiftwidth=4
+
+" Different filesyntax
+ au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 
 " Latex
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to

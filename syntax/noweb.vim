@@ -8,6 +8,9 @@ endif
 if !exists("noweb_backend")
     let noweb_backend = "tex" " this seems common
 endif
+if !exists("noweb_language")
+    let noweb_language = "cpp" " Parece un valor razonable
+endif
 
 if version < 600
     execute "source <sfile>:p:h/" . noweb_backend . ".vim"

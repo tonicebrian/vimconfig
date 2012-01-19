@@ -30,7 +30,9 @@ set tabstop=4
 set shiftwidth=4
 
 " Different filesyntax
- au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+au BufRead,BufNewFile *.nw  set filetype=noweb
+au BufRead,BufNewFile *.nw  set cindent
 
 " Latex
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to

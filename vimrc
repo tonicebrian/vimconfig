@@ -2,6 +2,9 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Automatically change to current directory
+set autochdir
+
 " Numbering
 set nu
 
@@ -25,6 +28,7 @@ map <leader>g :GundoToggle<CR>
 syntax on                           " syntax highlighing
 filetype on                          " try to detect filetypes
 filetype plugin indent on    " enable loading indent file for filetype
+filetype plugin on
 set expandtab
 set tabstop=4
 set shiftwidth=4

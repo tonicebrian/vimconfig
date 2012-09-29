@@ -5,6 +5,10 @@ call pathogen#helptags()
 " Automatically change to current directory
 set autochdir
 
+" Colors
+set background=dark
+colorscheme solarized
+
 " Numbering
 set nu
 

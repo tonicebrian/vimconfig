@@ -6,6 +6,7 @@ call pathogen#helptags()
 set autochdir
 
 " Colors
+set t_Co=16 " Necesary for terminator
 set background=dark
 colorscheme solarized
 

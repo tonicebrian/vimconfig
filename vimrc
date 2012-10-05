@@ -23,6 +23,12 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+" Don't use arrows
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 " Task lists
 map <leader>td <Plug>TaskList
 
@@ -42,6 +48,9 @@ set shiftwidth=4
 au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 au BufRead,BufNewFile *.nw  set filetype=noweb
 au BufRead,BufNewFile *.nw  set cindent
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufEnter *.org            call org#SetOrgFileType()
+
 
 " Latex
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to

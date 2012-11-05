@@ -47,6 +47,9 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+" Change mapleader to an easier to reach key
+let mapleader = ","
+
 " Task lists
 map <leader>td <Plug>TaskList
 

@@ -70,7 +70,7 @@ set shiftwidth=4
 au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 au BufRead,BufNewFile *.nw  set filetype=noweb
 au BufRead,BufNewFile *.nw  set cindent
-au BufRead,BufNewFile *.asciidoc set spell
+au BufRead,BufNewFile *.asciidoc set spell tw=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
 au BufEnter *.org            call org#SetOrgFileType()
 

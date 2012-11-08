@@ -2,6 +2,35 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Automatically change to current directory
+set autochdir
+
+set encoding=utf-8
+set scrolloff=3
+set autoindent
+set showmode
+set showcmd
+set ttyfast
+set ruler
+" Numbering
+"set nu
+if v:version > 702
+    set relativenumber
+endif
+
+" I want searching to follow regex rules
+nnoremap / /\v
+vnoremap / /\v
+set incsearch
+set showmatch
+set hlsearch
+
+" Colors
+set t_Co=16 " Necesary for terminator
+set background=dark
+colorscheme solarized
+
+
 " Folding
 set foldmethod=indent
 set foldlevel=99
@@ -11,6 +40,15 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+" Don't use arrows
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" Change mapleader to an easier to reach key
+let mapleader = ","
 
 " Task lists
 map <leader>td <Plug>TaskList
@@ -22,9 +60,20 @@ map <leader>g :GundoToggle<CR>
 syntax on                           " syntax highlighing
 filetype on                          " try to detect filetypes
 filetype plugin indent on    " enable loading indent file for filetype
+filetype plugin on
 set expandtab
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
+
+" Different filesyntax
+au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+au BufRead,BufNewFile *.nw  set filetype=noweb
+au BufRead,BufNewFile *.nw  set cindent
+au BufRead,BufNewFile *.asciidoc set spell tw=80
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufEnter *.org            call org#SetOrgFileType()
+
 
 " Latex
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to

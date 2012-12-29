@@ -18,6 +18,8 @@ if v:version > 702
     set relativenumber
 endif
 
+set pastetoggle=<F2>
+
 " I want searching to follow regex rules
 nnoremap / /\v
 vnoremap / /\v

@@ -1,2 +1,7 @@
 Complete Vim configuration files based on instructions from 
 http://sontek.net/turning-vim-into-a-modern-python-ide
+
+Adding a new submodule in the bundle directory means the following steps:
+   * git submodule add <URL de Girhub> bundle/<nombre_plugin>
+   * git submodule init
+   * git submodule update

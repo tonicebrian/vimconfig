@@ -25,3 +25,6 @@
 [submodule "bundle/VimOrganizer"]
 	path = bundle/VimOrganizer
 	url = https://github.com/hsitz/VimOrganizer.git
+[submodule "bundle/haskell-mode-vim"]
+	path = bundle/haskell-mode-vim
+	url = https://github.com/haskell/haskell-mode-vim.git

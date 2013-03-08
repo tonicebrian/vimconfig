@@ -28,3 +28,15 @@
 [submodule "bundle/haskell-mode-vim"]
 	path = bundle/haskell-mode-vim
 	url = https://github.com/haskell/haskell-mode-vim.git
+[submodule "bundle/haskellmode"]
+	path = bundle/haskellmode
+	url = https://github.com/lukerandall/haskellmode-vim.git
+[submodule "bundle/vimshell"]
+	path = bundle/vimshell
+	url = https://github.com/Shougo/vimshell.git
+[submodule "bundle/neco-ghc"]
+	path = bundle/neco-ghc
+	url = https://github.com/ujihisa/neco-ghc.git
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = https://github.com/Shougo/vimproc

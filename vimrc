@@ -75,7 +75,10 @@ au BufRead,BufNewFile *.nw  set cindent
 au BufRead,BufNewFile *.asciidoc set spell tw=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
 au BufEnter *.org            call org#SetOrgFileType()
+au BufEnter *.hs compiler ghc
 
+" Haskell
+let g:haddock_browser="/usr/bin/firefox"
 
 " Latex
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to

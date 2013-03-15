@@ -52,6 +52,7 @@ noremap <Right> <Nop>
 " Change mapleader to an easier to reach key
 let mapleader = ","
 
+
 " Task lists
 map <leader>td <Plug>TaskList
 
@@ -63,7 +64,10 @@ syntax on                           " syntax highlighing
 filetype on                          " try to detect filetypes
 filetype plugin indent on    " enable loading indent file for filetype
 filetype plugin on
+" Deal with tabs
 set expandtab
+set list
+set listchars=tab:>.
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4

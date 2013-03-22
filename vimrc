@@ -67,7 +67,7 @@ filetype plugin on
 " Deal with tabs
 set expandtab
 set list
-set listchars=tab:>.
+set listchars=tab:→\ 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4

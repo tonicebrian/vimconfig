@@ -115,6 +115,6 @@ map <leader>r :RopeRename<CR>
 nmap <leader>a <Esc>:Ack!
 
 " Include local configuration
-if filereadable(".vim.local")
+if filereadable(expand("~/.vim.local"))
 	so ~/.vim.local
 endif

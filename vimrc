@@ -19,6 +19,8 @@ if v:version > 702
 endif
 
 set pastetoggle=<F2>
+" Use the system's clipboard as the default register
+set clipboard=unnamedplus
 
 " I want searching to follow regex rules
 nnoremap / /\v

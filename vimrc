@@ -12,6 +12,7 @@ set showmode
 set showcmd
 set ttyfast
 set ruler
+set autoindent
 " Numbering
 "set nu
 if v:version > 702

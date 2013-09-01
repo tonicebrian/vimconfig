@@ -68,7 +68,7 @@ filetype on                          " try to detect filetypes
 filetype plugin indent on    " enable loading indent file for filetype
 filetype plugin on
 " Deal with tabs
-set expandtab
+set noexpandtab
 set list
 set listchars=tab:→\ 
 set tabstop=4

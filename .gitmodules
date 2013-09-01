@@ -40,3 +40,6 @@
 [submodule "bundle/vimproc"]
 	path = bundle/vimproc
 	url = https://github.com/Shougo/vimproc
+[submodule "bundle/table-mode"]
+	path = bundle/table-mode
+	url = http://github.com/dhruvasagar/vim-table-mode.git

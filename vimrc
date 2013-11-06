@@ -13,8 +13,8 @@ set showcmd
 set ttyfast
 set ruler
 set autoindent
+
 " Numbering
-"set nu
 if v:version > 702
     set relativenumber
 endif
@@ -35,7 +35,6 @@ set t_Co=16 " Necesary for terminator
 set background=dark
 colorscheme solarized
 
-
 " Folding
 set foldmethod=indent
 set foldlevel=99
@@ -55,7 +54,6 @@ noremap <Right> <Nop>
 " Change mapleader to an easier to reach key
 let mapleader = ","
 
-
 " Task lists
 map <leader>td <Plug>TaskList
 
@@ -67,6 +65,7 @@ syntax on                           " syntax highlighing
 filetype on                          " try to detect filetypes
 filetype plugin indent on    " enable loading indent file for filetype
 filetype plugin on
+
 " Deal with tabs
 set expandtab
 set list
@@ -117,7 +116,17 @@ map <leader>r :RopeRename<CR>
 " Searching
 nmap <leader>a <Esc>:Ack!
 
+" Macros
+" Aucomment this line and create a copy below
+autocmd FileType c,cpp,java,scala let @c='yypk^i// '
+autocmd FileType sh,ruby,python   let @c='yypk^i# '
+autocmd FileType conf,fstab       let @c='yypk^i# '
+autocmd FileType tex              let @c='yypk^i% '
+autocmd FileType mail             let @c='yypk^i> '
+autocmd FileType vim              let @c='yypk^i" '
+
 " Include local configuration
 if filereadable(expand("~/.vim.local"))
 	so ~/.vim.local
 endif
+

@@ -2,6 +2,10 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guifont=Consolas
+
 " Automatically change to current directory
 set autochdir
 

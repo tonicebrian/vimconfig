@@ -23,6 +23,9 @@ set pastetoggle=<F2>
 " Use the system's clipboard as the default register
 set clipboard=unnamedplus
 
+" Syntastic configuraiton
+let g:syntastic_always_populate_loc_list=1
+
 " I want searching to follow regex rules
 nnoremap / /\v
 vnoremap / /\v

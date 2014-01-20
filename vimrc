@@ -1,6 +1,36 @@
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+filetype plugin indent on     " Required!
+
+NeoBundle 'Rykka/riv.vim'
+NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'msanders/snipmate.vim.git'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'mitechie/pyflakes-pathogen.git'
+NeoBundle 'vim-scripts/The-NERD-tree.git'
+NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle 'mattn/calendar-vim.git'
+NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'hsitz/VimOrganizer.git'
+NeoBundle 'lukerandall/haskellmode-vim.git'
+NeoBundle 'Shougo/vimshell.git'
+NeoBundle 'ujihisa/neco-ghc.git'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'dhruvasagar/vim-table-mode.git'
+NeoBundle 'tpope/vim-repeat.git'
+NeoBundle 'scrooloose/syntastic.git'
+
+" NeoBundleCheck
+
+set textwidth=80
 
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar

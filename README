@@ -1,7 +1,5 @@
 Complete Vim configuration files based on instructions from 
-http://sontek.net/turning-vim-into-a-modern-python-ide
+https://github.com/joedicastro/dotfiles/blob/a87b42deb9c1132c8f801bb91d119f0b26d21d68/vim/README.m://github.com/joedicastro/dotfiles/blob/a87b42deb9c1132c8f801bb91d119f0b26d21d68/vim/README.md
 
-Adding a new submodule in the bundle directory means the following steps:
-   * git submodule add <URL de Girhub> bundle/<nombre_plugin>
-   * git submodule init
-   * git submodule update
+For the first start, you have to perform:
+     git clone https://github.com/Shougo/neobundle.vim bundle/neobundle.vim

@@ -1,9 +1,16 @@
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+if has('win32') || has ('win64')
+    let $VIMBUNDLE = $HOME."/vimfiles"
+else
+    let $VIMBUNDLE = $HOME."/.vim"
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+if has('vim_starting')
+    set nocompatible               " Be iMproved
+    let $NEOBUNDLEHOME = $VIMBUNDLE."/bundle/neobundle.vim"
+    set runtimepath^=$NEOBUNDLEHOME
+endif
+
+call neobundle#rc(expand($VIMBUNDLE))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -28,7 +35,7 @@ NeoBundle 'dhruvasagar/vim-table-mode.git'
 NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'scrooloose/syntastic.git'
 
-" NeoBundleCheck
+NeoBundleCheck
 
 set textwidth=80
 

@@ -19,22 +19,26 @@ filetype plugin indent on     " Required!
 
 NeoBundle 'Rykka/riv.vim'
 NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'msanders/snipmate.vim.git'
 NeoBundle 'tpope/vim-surround.git'
-NeoBundle 'mitechie/pyflakes-pathogen.git'
 NeoBundle 'vim-scripts/The-NERD-tree.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
-NeoBundle 'mattn/calendar-vim.git'
-NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'hsitz/VimOrganizer.git'
-NeoBundle 'lukerandall/haskellmode-vim.git'
-NeoBundle 'Shougo/vimshell.git'
-NeoBundle 'ujihisa/neco-ghc.git'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'dhruvasagar/vim-table-mode.git'
 NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'techlivezheng/vim-plugin-minibufexpl'
 
+NeoBundleLazy 'mattn/calendar-vim.git'
+NeoBundleLazy 'chrisbra/NrrwRgn'
+NeoBundleLazy 'hsitz/VimOrganizer.git'
+NeoBundleLazy 'dhruvasagar/vim-table-mode.git'
+NeoBundleLazy 'Shougo/vimshell.git'
+NeoBundleLazy 'Shougo/vimproc'
+
+NeoBundleLazy 'mitechie/pyflakes-pathogen.git'
+
+NeoBundleLazy 'lukerandall/haskellmode-vim.git'
+NeoBundleLazy 'ujihisa/neco-ghc.git'
 NeoBundleCheck
 
 set textwidth=80

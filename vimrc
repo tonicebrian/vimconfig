@@ -1,12 +1,12 @@
 if has('win32') || has ('win64')
-    let $VIMBUNDLE = $HOME."/vimfiles"
+    let $VIMBUNDLE = $HOME."/vimfiles/bundle"
 else
-    let $VIMBUNDLE = $HOME."/.vim"
+    let $VIMBUNDLE = $HOME."/.vim/bundle"
 endif
 
 if has('vim_starting')
     set nocompatible               " Be iMproved
-    let $NEOBUNDLEHOME = $VIMBUNDLE."/bundle/neobundle.vim"
+    let $NEOBUNDLEHOME = $VIMBUNDLE."/neobundle.vim"
     set runtimepath^=$NEOBUNDLEHOME
 endif
 

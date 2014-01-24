@@ -1,12 +1,12 @@
 if has('win32') || has ('win64')
-    let $VIMBUNDLE = $HOME."/vimfiles"
+    let $VIMBUNDLE = $HOME."/vimfiles/bundle"
 else
-    let $VIMBUNDLE = $HOME."/.vim"
+    let $VIMBUNDLE = $HOME."/.vim/bundle"
 endif
 
 if has('vim_starting')
     set nocompatible               " Be iMproved
-    let $NEOBUNDLEHOME = $VIMBUNDLE."/bundle/neobundle.vim"
+    let $NEOBUNDLEHOME = $VIMBUNDLE."/neobundle.vim"
     set runtimepath^=$NEOBUNDLEHOME
 endif
 
@@ -19,22 +19,33 @@ filetype plugin indent on     " Required!
 
 NeoBundle 'Rykka/riv.vim'
 NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'msanders/snipmate.vim.git'
 NeoBundle 'tpope/vim-surround.git'
-NeoBundle 'mitechie/pyflakes-pathogen.git'
 NeoBundle 'vim-scripts/The-NERD-tree.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
-NeoBundle 'mattn/calendar-vim.git'
-NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'hsitz/VimOrganizer.git'
-NeoBundle 'lukerandall/haskellmode-vim.git'
-NeoBundle 'Shougo/vimshell.git'
-NeoBundle 'ujihisa/neco-ghc.git'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'dhruvasagar/vim-table-mode.git'
 NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'techlivezheng/vim-plugin-minibufexpl'
+NeoBundle 'Shougo/vimproc',{
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
+NeoBundleLazy 'mattn/calendar-vim.git'
+NeoBundleLazy 'chrisbra/NrrwRgn'
+NeoBundleLazy 'hsitz/VimOrganizer.git'
+NeoBundleLazy 'dhruvasagar/vim-table-mode.git'
+NeoBundleLazy 'Shougo/vimshell.git'
+
+NeoBundleLazy 'mitechie/pyflakes-pathogen.git'
+
+NeoBundleLazy 'lukerandall/haskellmode-vim.git', {'autoload' : {'filetypes' : 'haskell'}}
+NeoBundleLazy 'ujihisa/neco-ghc.git', {'autoload' : {'filetypes' : 'haskell'}}
 NeoBundleCheck
 
 set textwidth=80
@@ -97,6 +108,7 @@ noremap <Right> <Nop>
 
 " Change mapleader to an easier to reach key
 let mapleader = ","
+let maplocalleader = " "
 
 " Task lists
 map <leader>td <Plug>TaskList
@@ -168,6 +180,34 @@ autocmd FileType conf,fstab       let @c='yypk^i# '
 autocmd FileType tex              let @c='yypk^i% '
 autocmd FileType mail             let @c='yypk^i> '
 autocmd FileType vim              let @c='yypk^i" '
+
+" Unite menus
+let g:unite_source_menu_menus = {}
+
+" menu prefix key (for all Unite menus) {{{
+nnoremap [menu] <Nop>
+nmap <LocalLeader> [menu]
+" }}}
+
+" menus menu
+nnoremap <silent>[menu]u :Unite -silent -winheight=20 menu<CR>
+
+" file searching menu {{{
+let g:unite_source_menu_menus.grep = {
+    \ 'description' : ' search files
+        \ ⌘ [space]a',
+    \}
+let g:unite_source_menu_menus.grep.command_candidates = [
+    \['▷ grep (ag → ack → grep) ⌘ ,a',
+        \'Unite -no-quit grep'],
+    \['▷ find',
+        \'Unite find'],
+    \['▷ locate',
+        \'Unite -start-insert locate'],
+    \['▷ vimgrep (very slow)',
+        \'Unite vimgrep'],
+    \]
+nnoremap <silent>[menu]a :Unite -silent menu:grep<CR>
 
 " Include local configuration
 if filereadable(expand("~/.vim.local"))

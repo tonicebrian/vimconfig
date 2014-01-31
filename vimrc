@@ -4,6 +4,8 @@ else
     let $VIMBUNDLE = $HOME."/.vim/bundle"
 endif
 
+filetype plugin off
+
 if has('vim_starting')
     set nocompatible               " Be iMproved
     let $NEOBUNDLEHOME = $VIMBUNDLE."/neobundle.vim"
@@ -14,8 +16,6 @@ call neobundle#rc(expand($VIMBUNDLE))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
-
-filetype plugin indent on     " Required!
 
 NeoBundle 'Rykka/riv.vim'
 NeoBundle 'tpope/vim-fugitive.git'
@@ -48,11 +48,16 @@ NeoBundleLazy 'lukerandall/haskellmode-vim.git', {'autoload' : {'filetypes' : 'h
 NeoBundleLazy 'ujihisa/neco-ghc.git', {'autoload' : {'filetypes' : 'haskell'}}
 NeoBundleCheck
 
+filetype plugin indent on     " Required!
+
 set textwidth=80
 
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
-set guifont=Consolas
+
+if has('win32') || has ('win64')
+    set guifont=Consolas
+endif
 
 " Automatically change to current directory
 set autochdir
@@ -108,7 +113,7 @@ noremap <Right> <Nop>
 
 " Change mapleader to an easier to reach key
 let mapleader = ","
-let maplocalleader = " "
+let maplocalleader = "_"
 
 " Task lists
 map <leader>td <Plug>TaskList
@@ -209,6 +214,22 @@ let g:unite_source_menu_menus.grep.command_candidates = [
     \]
 nnoremap <silent>[menu]a :Unite -silent menu:grep<CR>
 
+" Haskell menu {{{
+let g:unite_source_menu_menus.haskell = {
+    \ 'description' : ' haskell commands
+        \ ⌘ [space]h',
+    \}
+let g:unite_source_menu_menus.haskell.command_candidates = [
+    \['▷ create tags ⌘ ,_ct',
+        \'[menu]ct'],
+    \]
+" }}}
+nnoremap <silent>[menu]h :Unite -silent menu:haskell<CR>
+
+" |_ct|                 create |tags| file 
+" |_si|                 show info for id under cursor
+" |_t|                  show type for id under cursor
+" |_T|                  insert type declaration for id under cursor
 " Include local configuration
 if filereadable(expand("~/.vim.local"))
 	so ~/.vim.local

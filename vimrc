@@ -35,6 +35,7 @@ NeoBundle 'Shougo/vimproc',{
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
+NeoBundle 'majutsushi/tagbar' 
 
 NeoBundleLazy 'mattn/calendar-vim.git'
 NeoBundleLazy 'chrisbra/NrrwRgn'
@@ -46,6 +47,8 @@ NeoBundleLazy 'mitechie/pyflakes-pathogen.git'
 
 NeoBundleLazy 'lukerandall/haskellmode-vim.git', {'autoload' : {'filetypes' : 'haskell'}}
 NeoBundleLazy 'ujihisa/neco-ghc.git', {'autoload' : {'filetypes' : 'haskell'}}
+NeoBundleLazy 'hsitz/VimOrganizer', {'autoload' : {'filetypes' : 'org'}}
+
 NeoBundleCheck
 
 filetype plugin indent on     " Required!

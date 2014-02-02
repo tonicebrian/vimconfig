@@ -53,6 +53,10 @@ NeoBundleCheck
 
 filetype plugin indent on     " Required!
 
+" Shortcuts
+nmap <F8> :TagbarToggle<CR>
+nmap <F9> :NERDTree<CR>
+
 set textwidth=80
 
 set guioptions-=T  "remove toolbar
@@ -149,6 +153,7 @@ au BufEnter *.hs compiler ghc
 
 " Haskell
 let g:haddock_browser="/usr/bin/firefox"
+set iskeyword=a-z,A-Z,_,.,39 " Configuration for hoshasktags
 
 " Latex
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to

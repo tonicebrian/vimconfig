@@ -1,7 +1,10 @@
 if has('win32') || has ('win64')
     let $VIMBUNDLE = $HOME."/vimfiles/bundle"
+    " Use the system's clipboard as the default register
+    set clipboard=unnamed
 else
     let $VIMBUNDLE = $HOME."/.vim/bundle"
+    set clipboard=unnamedplus
 endif
 
 filetype plugin off
@@ -84,8 +87,6 @@ if v:version > 702
 endif
 
 set pastetoggle=<F2>
-" Use the system's clipboard as the default register
-set clipboard=unnamedplus
 
 " Syntastic configuraiton
 let g:syntastic_always_populate_loc_list=1

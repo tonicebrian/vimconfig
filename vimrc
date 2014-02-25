@@ -1,7 +1,10 @@
 if has('win32') || has ('win64')
     let $VIMBUNDLE = $HOME."/vimfiles/bundle"
+    set clipboard=unnamedplus
+    set guifont=Consolas
 else
     let $VIMBUNDLE = $HOME."/.vim/bundle"
+    set clipboard=unnamed
 endif
 
 filetype plugin off
@@ -62,10 +65,6 @@ set textwidth=80
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 
-if has('win32') || has ('win64')
-    set guifont=Consolas
-endif
-
 " Automatically change to current directory
 set autochdir
 
@@ -84,8 +83,7 @@ if v:version > 702
 endif
 
 set pastetoggle=<F2>
-" Use the system's clipboard as the default register
-set clipboard=unnamedplus
+
 
 " Syntastic configuraiton
 let g:syntastic_always_populate_loc_list=1

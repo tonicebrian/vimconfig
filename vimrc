@@ -42,7 +42,7 @@ NeoBundle 'majutsushi/tagbar'
 
 NeoBundleLazy 'mattn/calendar-vim.git'
 NeoBundleLazy 'chrisbra/NrrwRgn'
-NeoBundleLazy 'hsitz/VimOrganizer.git'
+NeoBundleLazy 'hsitz/VimOrganizer.git', {'autoload': {'filetypes' : 'org'}}
 NeoBundleLazy 'dhruvasagar/vim-table-mode.git'
 NeoBundleLazy 'Shougo/vimshell.git'
 

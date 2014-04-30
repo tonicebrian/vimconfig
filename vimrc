@@ -80,6 +80,8 @@ set autoindent
 " Numbering
 if v:version > 702
     set relativenumber
+else
+    set number
 endif
 
 set pastetoggle=<F2>

@@ -89,6 +89,8 @@ set pastetoggle=<F2>
 
 " Syntastic configuraiton
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " I want searching to follow regex rules
 nnoremap / /\v

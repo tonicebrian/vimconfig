@@ -1,7 +1,10 @@
 if has('win32') || has ('win64')
-    let $VIMBUNDLE = $HOME."/vimfiles/bundle"
+    let $VIMBUNDLE = $HOME."/vimfiles/bundle"    " Use the system's clipboard as the default register
+    set clipboard=unnamed
+    set guifont=Consolas
 else
     let $VIMBUNDLE = $HOME."/.vim/bundle"
+    set clipboard=unnamedplus
 endif
 
 filetype plugin off
@@ -39,7 +42,7 @@ NeoBundle 'majutsushi/tagbar'
 
 NeoBundleLazy 'mattn/calendar-vim.git'
 NeoBundleLazy 'chrisbra/NrrwRgn'
-NeoBundleLazy 'hsitz/VimOrganizer.git'
+NeoBundleLazy 'hsitz/VimOrganizer.git', {'autoload': {'filetypes' : 'org'}}
 NeoBundleLazy 'dhruvasagar/vim-table-mode.git'
 NeoBundleLazy 'Shougo/vimshell.git'
 
@@ -62,10 +65,6 @@ set textwidth=80
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 
-if has('win32') || has ('win64')
-    set guifont=Consolas
-endif
-
 " Automatically change to current directory
 set autochdir
 
@@ -81,14 +80,17 @@ set autoindent
 " Numbering
 if v:version > 702
     set relativenumber
+else
+    set number
 endif
 
 set pastetoggle=<F2>
-" Use the system's clipboard as the default register
-set clipboard=unnamedplus
+
 
 " Syntastic configuraiton
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " I want searching to follow regex rules
 nnoremap / /\v
@@ -130,9 +132,6 @@ map <leader>g :GundoToggle<CR>
 
 " Syntaxing
 syntax on                           " syntax highlighing
-filetype on                          " try to detect filetypes
-filetype plugin indent on    " enable loading indent file for filetype
-filetype plugin on
 
 " Deal with tabs
 set expandtab

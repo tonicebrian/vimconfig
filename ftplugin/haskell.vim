@@ -38,4 +38,3 @@ os.chdir(oldDir)
 EOF
 
 endfunction
-

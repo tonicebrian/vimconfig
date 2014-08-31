@@ -38,7 +38,8 @@ NeoBundle 'Shougo/vimproc',{
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'majutsushi/tagbar' 
+NeoBundle 'majutsushi/tagbar', 
+NeoBundle 'derekwyatt/vim-scala'
 
 NeoBundleLazy 'mattn/calendar-vim.git'
 NeoBundleLazy 'chrisbra/NrrwRgn'

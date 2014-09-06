@@ -30,10 +30,11 @@ if not os.path.exists("dist"):
 os.chdir("dist")
 os.system("find ../src | egrep '\.hs$' | xargs hothasktags > tags")
 
+vim.command("redraw!")
+
 vim.command("set tags+="+os.getcwd()+"/tags")
 os.chdir(oldDir)
 
 EOF
 
 endfunction
-

@@ -195,6 +195,14 @@ let g:haskell_tabular = 1
 
 " }}}
 
+" Slime {{{
+
+vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
+nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
+nmap <silent> <Leader>rv <Plug>SetTmuxVars
+
+" }}}
+
 " Haskell {{{ 
 let g:haddock_browser="/usr/bin/firefox"
 set iskeyword=a-z,A-Z,_,.,39 " Configuration for hoshasktags

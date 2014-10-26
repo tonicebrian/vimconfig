@@ -24,3 +24,11 @@ snippet cmakelists
 
 	target_link_libraries(UnitTester ${CPPUNIT_LIBRARIES})
 
+snippet guardfile
+	guard :shell, all_on_start: true do
+	  watch /.*\.l?hs$/ do |m|
+	    puts "\n\n\nCompiling..."
+		`cabal build && echo "Compiled!"`
+		end
+	end
+

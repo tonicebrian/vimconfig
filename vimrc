@@ -20,6 +20,7 @@ call neobundle#rc(expand($VIMBUNDLE))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" ReST documentation plugin
 NeoBundle 'Rykka/riv.vim'
 
 " Git plugins
@@ -35,6 +36,9 @@ NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/Gundo'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'godlygeek/tabular'
+
+" Different Syntax Types in the same file
+NeoBundle 'vim-scripts/SyntaxRange'
 
 NeoBundle 'msanders/snipmate.vim.git'
 NeoBundle 'tpope/vim-surround.git'

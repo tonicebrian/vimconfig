@@ -12,13 +12,21 @@ filetype plugin off
 if has('vim_starting')
     set nocompatible               " Be iMproved
     let $NEOBUNDLEHOME = $VIMBUNDLE."/neobundle.vim"
-    set runtimepath^=$NEOBUNDLEHOME
+    set runtimepath+=$NEOBUNDLEHOME
 endif
 
-call neobundle#rc(expand($VIMBUNDLE))
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
+" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+
+call neobundle#end()
 
 " ReST documentation plugin
 NeoBundle 'Rykka/riv.vim'

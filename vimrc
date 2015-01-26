@@ -23,6 +23,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " ReST documentation plugin
 NeoBundle 'Rykka/riv.vim'
 
+" Docker syntax highlight
+NeoBundle 'ekalinin/Dockerfile.vim'
+
 " Git plugins
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'int3/vim-extradite' " Extend fugitive capabilities

@@ -28,6 +28,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 call neobundle#end()
 
+" Remote debugger
+NeoBundle 'joonty/vdebug'
+let g:vdebug_options = {
+            \ 'path_maps': {"/var/www/html/apps/test":"/home/cebrian/GIT/enerbyte/enerbyte"},
+            \ 'server': '0.0.0.0'
+            \}
+
 " ReST documentation plugin
 NeoBundle 'Rykka/riv.vim'
 

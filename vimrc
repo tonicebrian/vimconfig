@@ -41,6 +41,9 @@ NeoBundle 'Rykka/riv.vim'
 " Docker syntax highlight
 NeoBundle 'ekalinin/Dockerfile.vim'
 
+" Visual increment
+NeoBundle 'triglav/vim-visual-increment'
+
 " Git plugins
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'int3/vim-extradite' " Extend fugitive capabilities

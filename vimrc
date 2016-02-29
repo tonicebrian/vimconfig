@@ -29,11 +29,22 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 call neobundle#end()
 
 " Remote debugger
-NeoBundle 'joonty/vdebug'
+NeoBundleLazy 'joonty/vdebug'
 let g:vdebug_options = {
             \ 'path_maps': {"/var/www/html/apps/test":"/home/cebrian/GIT/enerbyte/enerbyte"},
             \ 'server': '0.0.0.0'
             \}
+
+" Snippets
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets' " This are the actual snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " ReST documentation plugin
 NeoBundle 'Rykka/riv.vim'
@@ -61,7 +72,7 @@ NeoBundle 'godlygeek/tabular'
 " Different Syntax Types in the same file
 NeoBundle 'vim-scripts/SyntaxRange'
 
-NeoBundle 'msanders/snipmate.vim.git'
+""NeoBundle 'msanders/snipmate.vim.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'vim-scripts/The-NERD-tree.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
@@ -76,21 +87,21 @@ NeoBundle 'Shougo/vimproc',{
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'jgdavey/tslime.vim' "Send snippets to tmux
+NeoBundleLazy 'jgdavey/tslime.vim' "Send snippets to tmux
 NeoBundle 'ervandew/supertab'  "Do all your text insertion with TAB
 NeoBundle 'majutsushi/tagbar' 
-NeoBundle 'derekwyatt/vim-scala'
+NeoBundleLazy 'derekwyatt/vim-scala'
 
 " Haskell
-NeoBundle 'raichoo/haskell-vim'
-NeoBundle 'begriffs/vim-haskellConceal'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'Twinside/vim-hoogle'
+NeoBundleLazy 'raichoo/haskell-vim'
+NeoBundleLazy 'begriffs/vim-haskellConceal'
+NeoBundleLazy 'eagletmt/ghcmod-vim'
+NeoBundleLazy 'eagletmt/neco-ghc'
+NeoBundleLazy 'Twinside/vim-hoogle'
 
 NeoBundleLazy 'mattn/calendar-vim.git'
 NeoBundleLazy 'chrisbra/NrrwRgn'
-NeoBundle 'hsitz/VimOrganizer.git', {'autoload': {'filetypes' : 'org'}}
+NeoBundleLazy 'hsitz/VimOrganizer.git', {'autoload': {'filetypes' : 'org'}}
 NeoBundleLazy 'dhruvasagar/vim-table-mode.git'
 NeoBundleLazy 'Shougo/vimshell.git'
 
@@ -196,7 +207,6 @@ set shiftwidth=4
 au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 au BufRead,BufNewFile *.nw  set filetype=noweb
 au BufRead,BufNewFile *.nw  set cindent
-au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.asciidoc set spell tw=80
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
 au BufEnter *.org            call org#SetOrgFileType()

@@ -26,8 +26,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
-call neobundle#end()
-
 " Remote debugger
 NeoBundleLazy 'joonty/vdebug'
 let g:vdebug_options = {
@@ -106,6 +104,8 @@ NeoBundleLazy 'dhruvasagar/vim-table-mode.git'
 NeoBundleLazy 'Shougo/vimshell.git'
 
 NeoBundleLazy 'mitechie/pyflakes-pathogen.git'
+
+call neobundle#end()
 
 NeoBundleCheck
 

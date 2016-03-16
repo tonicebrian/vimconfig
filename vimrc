@@ -26,13 +26,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
-" Remote debugger
-NeoBundleLazy 'joonty/vdebug'
-let g:vdebug_options = {
-            \ 'path_maps': {"/var/www/html/apps/test":"/home/cebrian/GIT/enerbyte/enerbyte"},
-            \ 'server': '0.0.0.0'
-            \}
-
 " Snippets
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets' " This are the actual snippets
@@ -47,18 +40,11 @@ let g:UltiSnipsEditSplit="vertical"
 " ReST documentation plugin
 NeoBundle 'Rykka/riv.vim'
 
-" Docker syntax highlight
-NeoBundle 'ekalinin/Dockerfile.vim'
-
-" Visual increment
-NeoBundle 'triglav/vim-visual-increment'
-
 " Git plugins
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'int3/vim-extradite' " Extend fugitive capabilities
 
 " Bars, panels and files
-NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/unite.vim'
 
 " Text manipulation
@@ -67,14 +53,9 @@ NeoBundle 'vim-scripts/Gundo'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'godlygeek/tabular'
 
-" Different Syntax Types in the same file
-NeoBundle 'vim-scripts/SyntaxRange'
-
-""NeoBundle 'msanders/snipmate.vim.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'vim-scripts/The-NERD-tree.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
-NeoBundle 'tpope/vim-repeat.git'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'techlivezheng/vim-plugin-minibufexpl'
 NeoBundle 'Shougo/vimproc',{
@@ -86,8 +67,6 @@ NeoBundle 'Shougo/vimproc',{
       \    },
       \ }
 NeoBundleLazy 'jgdavey/tslime.vim' "Send snippets to tmux
-NeoBundle 'ervandew/supertab'  "Do all your text insertion with TAB
-NeoBundle 'majutsushi/tagbar' 
 NeoBundleLazy 'derekwyatt/vim-scala'
 
 " Haskell
@@ -97,13 +76,7 @@ NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
 NeoBundleLazy 'Twinside/vim-hoogle'
 
-NeoBundleLazy 'mattn/calendar-vim.git'
 NeoBundleLazy 'chrisbra/NrrwRgn'
-NeoBundleLazy 'hsitz/VimOrganizer.git', {'autoload': {'filetypes' : 'org'}}
-NeoBundleLazy 'dhruvasagar/vim-table-mode.git'
-NeoBundleLazy 'Shougo/vimshell.git'
-
-NeoBundleLazy 'mitechie/pyflakes-pathogen.git'
 
 call neobundle#end()
 

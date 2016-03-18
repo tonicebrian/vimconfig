@@ -66,7 +66,7 @@ NeoBundle 'Shougo/vimproc',{
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundleLazy 'jgdavey/tslime.vim' "Send snippets to tmux
+NeoBundle 'jgdavey/tslime.vim' "Send snippets to tmux
 NeoBundleLazy 'derekwyatt/vim-scala'
 
 " Haskell

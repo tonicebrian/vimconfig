@@ -54,6 +54,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Replacecment for Grep
 NeoBundle 'numkil/ag.nvim'
 
+" NERDTree
+NeoBundle 'scrooloose/nerdtree'
+
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -74,7 +77,6 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'godlygeek/tabular'
 
 NeoBundle 'tpope/vim-surround.git'
-NeoBundle 'vim-scripts/The-NERD-tree.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'techlivezheng/vim-plugin-minibufexpl'
@@ -108,9 +110,31 @@ NeoBundleCheck
 #+END_SRC
 * Key bindings
 
-| Functionality | Action                   | Keymap |
-| File grep     | Search word under cursor |        |
-
+| Functionality | Action                                   | Keymap |
+|---------------+------------------------------------------+--------|
+| Leader        | Compose commands                         | ,      |
+| LocalLeader   | Compose commands                         | _      |
+| File grep     | Search word under cursor                 | K      |
+| NERDTree      | Open window                              | <F9>   |
+|               | Open window and open folders recursively | <F9>PO |
+|---------------+------------------------------------------+--------|
+| Motion        | Move to left window                      | <c-h>  |
+|               | Move to right window                     | <c-l>  |
+|               | Move to window below                     | <c-k>  |
+|               | Move to window above                     | <c-j>  |
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+let mapleader = ","
+let maplocalleader = "_"
+#+END_SRC
+* Motion
+Remap moving between windows for fewer keystrokes
+#+BEGIN_SRC sh ~/.config/nvim/init.vim
+ Window movement
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+#+END_SRC
 
 * Faster grepping using Silver Searcher
 For grepping commands we are going to use =ag= as it claims to be faster than
@@ -126,12 +150,66 @@ let g:ag_working_path_mode="ra"
 nnoremap K :Ag <C-R><C-W><CR>:cw<CR>
 
 #+END_SRC
+* NERDTree
+
+It is convenient to have file navigation inside vim. Also open files recursively
+with F9 starting in current folder. If you don't want this just type :NERDTree
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+:nnoremap <F9> :NERDTree<cr>
+#+END_SRC
+* Unite
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+" Unite menus
+let g:unite_source_menu_menus = {}
+
+" menu prefix key (for all Unite menus) {{{
+nmap <LocalLeader> [menu]
+" }}}
+
+" menus menu
+nnoremap <silent>[menu]u :Unite -silent -winheight=20 menu<CR>
+
+" file searching menu {{{
+let g:unite_source_menu_menus.grep = {
+    \ 'description' : ' search files
+        \ ⌘ [space]a',
+    \}
+let g:unite_source_menu_menus.grep.command_candidates = [
+    \['▷ grep (ag → ack → grep) ⌘ ,a',
+        \'Unite -no-quit grep'],
+    \['▷ find',
+        \'Unite find'],
+    \['▷ locate',
+        \'Unite -start-insert locate'],
+    \['▷ vimgrep (very slow)',
+        \'Unite vimgrep'],
+    \]
+nnoremap <silent>[menu]a :Unite -silent menu:grep<CR>
+
+" Haskell menu {{{
+let g:unite_source_menu_menus.haskell = {
+    \ 'description' : ' haskell commands
+        \ ⌘ [space]h',
+    \}
+let g:unite_source_menu_menus.haskell.command_candidates = [
+    \['▷ create tags ⌘ ,_ct',
+        \'[menu]ct'],
+    \]
+" }}}
+nnoremap <silent>[menu]h :Unite -silent menu:haskell<CR>
+
+" |_ct|                 create |tags| file 
+" |_si|                 show info for id under cursor
+" |_t|                  show type for id under cursor
+" |_T|                  insert type declaration for id under cursor
+#+END_SRC
+
 * TODO. Process the rest of the configuration file
 
 Instead of converting =vimrc= completely to Literate programming go bit by bit.
 Here is the current status.
 
-#+BEGIN_SRC sh :tangle ~/.local/nvim/init.vim
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
 filetype plugin indent on     " Required!
 
 
@@ -233,21 +311,11 @@ colorscheme solarized
 set foldmethod=indent
 set foldlevel=99
 
-" Window movement
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
-
 " Don't use arrows
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-
-" Change mapleader to an easier to reach key
-let mapleader = ","
-let maplocalleader = "_"
 
 " Turn on the WiLd menu
 set wildmenu
@@ -437,9 +505,6 @@ vnoremap <silent> <leader>h> :call Pointful()<CR>
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
-" Pyflakes
-let g:pyflakes_use_quickfix = 0
-
 " Pep 8
 let g:pep8_map='<leader>8'
 
@@ -451,69 +516,11 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-" File NERD
-map <leader>n :NERDTreeToggle<CR>
-
 " Refactoring
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 
-" Searching
-nmap <leader>a <Esc>:Ack!
 
-" Macros
-" Aucomment this line and create a copy below
-autocmd FileType c,cpp,java,scala let @c='yypk^i// '
-autocmd FileType sh,ruby,python   let @c='yypk^i# '
-autocmd FileType conf,fstab       let @c='yypk^i# '
-autocmd FileType tex              let @c='yypk^i% '
-autocmd FileType mail             let @c='yypk^i> '
-autocmd FileType vim              let @c='yypk^i" '
-
-" Unite menus
-let g:unite_source_menu_menus = {}
-
-" menu prefix key (for all Unite menus) {{{
-nnoremap [menu] <Nop>
-nmap <LocalLeader> [menu]
-" }}}
-
-" menus menu
-nnoremap <silent>[menu]u :Unite -silent -winheight=20 menu<CR>
-
-" file searching menu {{{
-let g:unite_source_menu_menus.grep = {
-    \ 'description' : ' search files
-        \ ⌘ [space]a',
-    \}
-let g:unite_source_menu_menus.grep.command_candidates = [
-    \['▷ grep (ag → ack → grep) ⌘ ,a',
-        \'Unite -no-quit grep'],
-    \['▷ find',
-        \'Unite find'],
-    \['▷ locate',
-        \'Unite -start-insert locate'],
-    \['▷ vimgrep (very slow)',
-        \'Unite vimgrep'],
-    \]
-nnoremap <silent>[menu]a :Unite -silent menu:grep<CR>
-
-" Haskell menu {{{
-let g:unite_source_menu_menus.haskell = {
-    \ 'description' : ' haskell commands
-        \ ⌘ [space]h',
-    \}
-let g:unite_source_menu_menus.haskell.command_candidates = [
-    \['▷ create tags ⌘ ,_ct',
-        \'[menu]ct'],
-    \]
-" }}}
-nnoremap <silent>[menu]h :Unite -silent menu:haskell<CR>
-
-" |_ct|                 create |tags| file 
-" |_si|                 show info for id under cursor
-" |_t|                  show type for id under cursor
-" |_T|                  insert type declaration for id under cursor
 " Include local configuration
 if filereadable(expand("~/.vim.local"))
 	so ~/.vim.local

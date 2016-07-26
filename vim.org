@@ -70,6 +70,9 @@ NeoBundle 'int3/vim-extradite' " Extend fugitive capabilities
 " Bars, panels and files
 NeoBundle 'Shougo/unite.vim'
 
+" Javascript
+NeoBundle 'maksimr/vim-jsbeautify'
+
 " Text manipulation
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/Gundo'
@@ -110,18 +113,26 @@ NeoBundleCheck
 #+END_SRC
 * Key bindings
 
-| Functionality | Action                                   | Keymap |
-|---------------+------------------------------------------+--------|
-| Leader        | Compose commands                         | ,      |
-| LocalLeader   | Compose commands                         | _      |
-| File grep     | Search word under cursor                 | K      |
-| NERDTree      | Open window                              | <F9>   |
-|               | Open window and open folders recursively | <F9>PO |
-|---------------+------------------------------------------+--------|
-| Motion        | Move to left window                      | <c-h>  |
-|               | Move to right window                     | <c-l>  |
-|               | Move to window below                     | <c-k>  |
-|               | Move to window above                     | <c-j>  |
+| Functionality | Action                                   | Keymap         |
+|---------------+------------------------------------------+----------------|
+| Leader        | Compose commands                         | ,              |
+| LocalLeader   | Compose commands                         | _              |
+|---------------+------------------------------------------+----------------|
+| Ag            | Search word under cursor                 | K              |
+|---------------+------------------------------------------+----------------|
+| NERDTree      | Open window                              | <F9>           |
+|               | Open window and open folders recursively | <F9>PO         |
+|               | Close NERDTree window                    | <F10>          |
+|---------------+------------------------------------------+----------------|
+| Motion        | Move to left window                      | <c-h>          |
+|               | Move to right window                     | <c-l>          |
+|               | Move to window below                     | <c-k>          |
+|               | Move to window above                     | <c-j>          |
+|---------------+------------------------------------------+----------------|
+| Unite         | Open Menu                                | <LocalLeader>u |
+|               | Grep                                     | <LocalLeader>a |
+|---------------+------------------------------------------+----------------|
+| JsBeautify    | Beautifies JSON, JS, HTML or CSS         | <c-f>          |
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
 let mapleader = ","
 let maplocalleader = "_"
@@ -156,6 +167,26 @@ It is convenient to have file navigation inside vim. Also open files recursively
 with F9 starting in current folder. If you don't want this just type :NERDTree
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
 :nnoremap <F9> :NERDTree<cr>
+:nnoremap <F10> :NERDTreeClose<cr>
+#+END_SRC
+* Javascript, Html y JsBeautify
+La utilidad JsBeautify permite indentar y presentar de forma visualmente
+atrativa los formatos Json, Javascript, HTML y CSS. Para ello crear el mismo
+mapping <c-f> que funcionará al entrar en los distintos tipos de fichero.
+
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+".vimrc
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 #+END_SRC
 * Unite
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
@@ -262,7 +293,6 @@ let g:pymode_folding = 0
 
 " Shortcuts
 nmap <F8> :TagbarToggle<CR>
-nmap <F9> :NERDTree<CR>
 
 set textwidth=80
 

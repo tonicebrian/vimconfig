@@ -2,6 +2,9 @@
 
 This is an attempt for having a manageable vimrc file by maintaining this
 literate programming file
+
+In order to tangle C-c C-v t
+
 * Vimrc
                                  
 First let's make our vimrc truly multiplatform
@@ -72,6 +75,9 @@ NeoBundle 'Shougo/unite.vim'
 
 " Javascript
 NeoBundle 'maksimr/vim-jsbeautify'
+
+" Elm
+NeoBundle 'lambdatoast/elm.vim'
 
 " Text manipulation
 NeoBundle 'vim-scripts/Align'
@@ -234,7 +240,13 @@ nnoremap <silent>[menu]h :Unite -silent menu:haskell<CR>
 " |_t|                  show type for id under cursor
 " |_T|                  insert type declaration for id under cursor
 #+END_SRC
-
+* Elm
+I'm going to start playing with Elm 
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+nnoremap <leader>el :ElmEvalLine<CR>
+vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
+nnoremap <leader>em :ElmMakeCurrentFile<CR>
+#+END_SRC
 * TODO. Process the rest of the configuration file
 
 Instead of converting =vimrc= completely to Literate programming go bit by bit.

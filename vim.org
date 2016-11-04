@@ -181,8 +181,6 @@ atrativa los formatos Json, Javascript, HTML y CSS. Para ello crear el mismo
 mapping <c-f> que funcionará al entrar en los distintos tipos de fichero.
 
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
-".vimrc
-map <c-f> :call JsBeautify()<cr>
 " or
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for json

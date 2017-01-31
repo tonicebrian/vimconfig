@@ -59,6 +59,12 @@ NeoBundle 'numkil/ag.nvim'
 
 " NERDTree
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdcommenter'
+
+" Autocomplete functionality
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'ervandew/supertab'
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -73,8 +79,11 @@ NeoBundle 'int3/vim-extradite' " Extend fugitive capabilities
 " Bars, panels and files
 NeoBundle 'Shougo/unite.vim'
 
+" Web programming
 " Javascript
 NeoBundle 'maksimr/vim-jsbeautify'
+" HTML & CSS
+NeoBundle 'mattn/emmet-vim'
 
 " Elm
 NeoBundle 'lambdatoast/elm.vim'
@@ -101,10 +110,10 @@ NeoBundle 'jgdavey/tslime.vim' "Send snippets to tmux
 NeoBundleLazy 'derekwyatt/vim-scala'
 
 " Haskell
-NeoBundleLazy 'raichoo/haskell-vim'
-NeoBundleLazy 'begriffs/vim-haskellConceal'
 NeoBundleLazy 'eagletmt/ghcmod-vim'
 NeoBundleLazy 'eagletmt/neco-ghc'
+NeoBundleLazy 'raichoo/haskell-vim'
+NeoBundleLazy 'begriffs/vim-haskellConceal'
 NeoBundleLazy 'Twinside/vim-hoogle'
 
 NeoBundleLazy 'chrisbra/NrrwRgn'
@@ -138,7 +147,9 @@ NeoBundleCheck
 | Unite         | Open Menu                                | <LocalLeader>u |
 |               | Grep                                     | <LocalLeader>a |
 |---------------+------------------------------------------+----------------|
-| JsBeautify    | Beautifies JSON, JS, HTML or CSS         | <c-f>          |
+| JsBeautify    | Beautifies JSON, JS, HTML or CSS         | <A-f>          |
+|---------------+------------------------------------------+----------------|
+| Emmet         | Transform abbreviations into HTML        | <c-y>,         |
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
 let mapleader = ","
 let maplocalleader = "_"
@@ -167,6 +178,18 @@ let g:ag_working_path_mode="ra"
 nnoremap K :Ag <C-R><C-W><CR>:cw<CR>
 
 #+END_SRC
+
+* Autocomplete
+Set options for autocomplete
+
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+set completeopt=menuone,menu,longest
+
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
+set wildmode=longest,list,full
+set wildmenu
+set completeopt+=longest
+#+END_SRC
 * NERDTree
 
 It is convenient to have file navigation inside vim. Also open files recursively
@@ -178,19 +201,35 @@ with F9 starting in current folder. If you don't want this just type :NERDTree
 * Javascript, Html y JsBeautify
 La utilidad JsBeautify permite indentar y presentar de forma visualmente
 atrativa los formatos Json, Javascript, HTML y CSS. Para ello crear el mismo
-mapping <c-f> que funcionará al entrar en los distintos tipos de fichero.
+mapping <A-f> que funcionará al entrar en los distintos tipos de fichero.
 
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+<<<<<<< 2360cb6222157cda8a73b46f7ece2cfd8c648a15
+=======
+".vimrc
+map <A-f> :call JsBeautify()<cr>
+>>>>>>> More haskell goodies
 " or
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer>  <A-f> :call JsBeautify()<cr>
 " for json
-autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+autocmd FileType json noremap <buffer> <A-f> :call JsonBeautify()<cr>
 " for jsx
-autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+autocmd FileType jsx noremap <buffer> <A-f> :call JsxBeautify()<cr>
 " for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType html noremap <buffer> <A-f> :call HtmlBeautify()<cr>
 " for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd FileType css noremap <buffer> <A-f> :call CSSBeautify()<cr>
+#+END_SRC
+** HTML: Emmet y Tidy
+
+Para trabajar con HTML utilizamos el plugin [[https://github.com/mattn/emmet-vim/][emmet-vim]] plugin. Chequear la web de
+[[http://docs.emmet.io/abbreviations/syntax/][emmet]] para aprender la sintaxis de las abreviaciones.
+
+Para formatear los HTML utilizamos Tidy. Le indicamos que no tenga en cuenta los
+propietarios de ionic.
+
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+let g:syntastic_html_tidy_ignore_errors=["<ion-", "discarding unexpected </ion-", " proprietary attribute \"ng-"]
 #+END_SRC
 * Unite
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
@@ -253,6 +292,10 @@ Here is the current status.
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
 filetype plugin indent on     " Required!
 
+" Ctr-p plugin
+map <silent> <Leader>t :CtrlP()<CR>
+noremap <leader>b<space> :CtrlPBuffer<cr>
+let g:ctrlp_custom_ignore = '\v[\/]dist$'
 
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
@@ -331,6 +374,10 @@ set pastetoggle=<F2>
 
 
 " Syntastic configuraiton
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
@@ -483,7 +530,7 @@ au BufEnter /*.hs call LoadHscope()
 set completeopt+=longest
 
 " Use buffer words as default tab completion
-let g:SuperTabDefaultCompletionType = '<c-x><c-p>'
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
 " But provide (neco-ghc) omnicompletion
 if has("gui_running")
@@ -493,6 +540,9 @@ else " no gui
     inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
   endif
 endif
+
+let g:haskellmode_completion_ghc = 1
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Show types in completion suggestions
 let g:necoghc_enable_detailed_browse = 1

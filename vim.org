@@ -61,6 +61,9 @@ NeoBundle 'numkil/ag.nvim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/nerdcommenter'
 
+" Pig syntax highlight
+NeoBundle 'motus/pig.vim'
+
 " Autocomplete functionality
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'

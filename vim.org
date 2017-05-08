@@ -5,6 +5,8 @@ literate programming file
 
 In order to tangle C-c C-v t
 
+NOTE. For a fresh installation of dein, after firing `vim` do a `:call dein#update()`
+
 * Vimrc
                                  
 Install deim and plugins as required
@@ -18,7 +20,7 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/cebrian/.config/nvim//repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.config/nvim/repos/github.com/Shougo/dein.vim
 
 " Required:
 if dein#load_state($HOME.'/.config/nvim/')

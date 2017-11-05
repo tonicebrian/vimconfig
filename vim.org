@@ -34,71 +34,72 @@ if dein#load_state($HOME.'/.config/nvim/')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
-   " Snippets
-   call dein#add('SirVer/ultisnips')
-   call dein#add('honza/vim-snippets') " This are the actual snippets
-   let g:UltiSnipsExpandTrigger="<tab>"
-   let g:UltiSnipsListSnippets="<c-tab>"
-   let g:UltiSnipsJumpForwardTrigger="<c-b>"
-   let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  call dein#add('ledger/vim-ledger')
+  " Snippets
+  call dein#add('SirVer/ultisnips')
+  call dein#add('honza/vim-snippets') " This are the actual snippets
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsListSnippets="<c-tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-   " Replacecment for Grep
-   call dein#add('numkil/ag.nvim')
+  " Replacecment for Grep
+  call dein#add('numkil/ag.nvim')
 
-   " If you want :UltiSnipsEdit to split your window.
-   let g:UltiSnipsEditSplit="vertical"
+  " If you want :UltiSnipsEdit to split your window.
+  let g:UltiSnipsEditSplit="vertical"
 
-   " ReST documentation plugin
-   call dein#add('Rykka/riv.vim')
+  " ReST documentation plugin
+  call dein#add('Rykka/riv.vim')
 
-   " Git plugins
-   call dein#add('tpope/vim-fugitive.git')
-   call dein#add('int3/vim-extradite') " Extend fugitive capabilities
+  " Git plugins
+  call dein#add('tpope/vim-fugitive.git')
+  call dein#add('int3/vim-extradite') " Extend fugitive capabilities
 
-   " Bars, panels and files
-   call dein#add('Shougo/unite.vim')
+  " Bars, panels and files
+  call dein#add('Shougo/unite.vim')
 
-   " Text manipulation
-   call dein#add('vim-scripts/Align')
-   call dein#add('vim-scripts/Gundo')
-   call dein#add('tpope/vim-commentary')
-   call dein#add('godlygeek/tabular')
+  " Text manipulation
+  call dein#add('vim-scripts/Align')
+  call dein#add('vim-scripts/Gundo')
+  call dein#add('tpope/vim-commentary')
+  call dein#add('godlygeek/tabular')
 
-   call dein#add('tpope/vim-surround.git')
-   call dein#add('vim-scripts/The-NERD-tree.git')
-   call dein#add('altercation/vim-colors-solarized.git')
-   call dein#add('scrooloose/syntastic.git')
-   call dein#add('techlivezheng/vim-plugin-minibufexpl')
-   call dein#add('Shougo/vimproc',{
-         \ 'build' : {
-         \     'windows' : 'make -f make_mingw32.mak',
-         \     'cygwin' : 'make -f make_cygwin.mak',
-         \     'mac' : 'make -f make_mac.mak',
-         \     'unix' : 'make -f make_unix.mak',
-         \    },
-         \ })
-   call dein#add('jgdavey/tslime.vim') "Send snippets to tmux
-   call dein#add('derekwyatt/vim-scala')
+  call dein#add('tpope/vim-surround.git')
+  call dein#add('vim-scripts/The-NERD-tree.git')
+  call dein#add('altercation/vim-colors-solarized.git')
+  call dein#add('scrooloose/syntastic.git')
+  call dein#add('techlivezheng/vim-plugin-minibufexpl')
+  call dein#add('Shougo/vimproc',{
+        \ 'build' : {
+        \     'windows' : 'make -f make_mingw32.mak',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'unix' : 'make -f make_unix.mak',
+        \    },
+        \ })
+  call dein#add('jgdavey/tslime.vim') "Send snippets to tmux
+  call dein#add('derekwyatt/vim-scala')
 
-   " Haskell
-   call dein#add('raichoo/haskell-vim')
-   call dein#add('begriffs/vim-haskellConceal')
-   call dein#add('eagletmt/ghcmod-vim')
-   call dein#add('eagletmt/neco-ghc')
-   call dein#add('Twinside/vim-hoogle')
+  " Haskell
+  call dein#add('raichoo/haskell-vim')
+  call dein#add('begriffs/vim-haskellConceal')
+  call dein#add('eagletmt/ghcmod-vim')
+  call dein#add('eagletmt/neco-ghc')
+  call dein#add('Twinside/vim-hoogle')
 
-   call dein#add('chrisbra/NrrwRgn')
+  call dein#add('chrisbra/NrrwRgn')
 
-   " Python development
-   call dein#add('klen/python-mode')
-   call dein#add('davidhalter/jedi-vim')
+  " Python development
+  call dein#add('klen/python-mode')
+  call dein#add('davidhalter/jedi-vim')
 
-   " You can specify revision/branch/tag.
-   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
-   " Syntax Highlight
-   " Pig
-   call dein#add('motus/pig.vim')
+  " Syntax Highlight
+  " Pig
+  call dein#add('motus/pig.vim')
 
   " Required:
   call dein#end()

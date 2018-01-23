@@ -232,6 +232,12 @@ nnoremap <leader>el :ElmEvalLine<CR>
 vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
 nnoremap <leader>em :ElmMakeCurrentFile<CR>
 #+END_SRC
+* Python
+Disable Python 
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+let g:jedi#force_py_version = 3
+#+END_SRC
+
 * TODO. Process the rest of the configuration file
 
 Instead of converting =vimrc= completely to Literate programming go bit by bit.

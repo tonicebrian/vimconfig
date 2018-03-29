@@ -30,6 +30,13 @@ if dein#load_state($HOME.'/.config/nvim/')
   " Required:
   call dein#add($HOME.'/.config/nvim//repos/github.com/Shougo/dein.vim')
 
+  " Language server support
+  call dein#add('autozimu/LanguageClient-neovim', {
+    \ 'rev': 'next',
+    \ 'build': './install.sh',
+    \ })
+
+  call dein#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
   " Add or remove your plugins here:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
@@ -95,7 +102,7 @@ if dein#load_state($HOME.'/.config/nvim/')
   call dein#add('davidhalter/jedi-vim')
 
   " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  call dein#add('Shougo/vimshell')
 
   " Syntax Highlight
   " Pig
@@ -237,6 +244,14 @@ Disable Python
 #+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
 let g:jedi#force_py_version = 3
 #+END_SRC
+* Language Server
+Find the corresponding language servers for every programming language
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['hie', '--lsp'],
+    \ }
+#+END_SRC
+
 
 * TODO. Process the rest of the configuration file
 

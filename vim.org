@@ -30,6 +30,13 @@ if dein#load_state($HOME.'/.config/nvim/')
   " Required:
   call dein#add($HOME.'/.config/nvim//repos/github.com/Shougo/dein.vim')
 
+  " Language server support
+  call dein#add('autozimu/LanguageClient-neovim', {
+    \ 'rev': 'next',
+    \ 'build': './install.sh',
+    \ })
+
+  call dein#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
   " Add or remove your plugins here:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
@@ -103,16 +110,6 @@ if dein#load_state($HOME.'/.config/nvim/')
    " Avro
    call dein#add('gurpreetatwal/vim-avro')
 
-   " End of Syntax Highlight
-   
-   " LangServer
-   call dein#add('autozimu/LanguageClient-neovim', {
-    \ 'rev': 'branch',
-    \ 'build': 'bash install.sh',
-    \ })
-  call dein#add('Shougo/deoplete.nvim', { 
-    \ 'do': ':UpdateRemotePlugins' 
-    \ })
   " Required:
   call dein#end()
   call dein#save_state()
@@ -244,11 +241,19 @@ nnoremap <leader>el :ElmEvalLine<CR>
 vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
 nnoremap <leader>em :ElmMakeCurrentFile<CR>
 #+END_SRC
-* LangServer
-Configuration of the LangServer client in neovim
-#+BEGIN_SRC sh :tangle literate programming file
+* Python
+Disable Python 
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+let g:jedi#force_py_version = 3
+#+END_SRC
+* Language Server
+Find the corresponding language servers for every programming language
+#+BEGIN_SRC sh :tangle ~/.config/nvim/init.vim
+let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['hie', '--lsp'],
+    \ }
+#+END_SRC
 
-In order to tangle C-c C-v t
 
 * TODO. Process the rest of the configuration file
 

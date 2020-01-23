@@ -117,8 +117,11 @@ set wildmode=longest,list,full
 set wildmenu
 set completeopt+=longest
 
+" Remaps
 :nnoremap <F9> :NERDTree<cr>
 :nnoremap <F10> :NERDTreeClose<cr>
+:tnoremap <Esc> <C-\><C-n>
+
 
 ".vimrc
 map <A-f> :call JsBeautify()<cr>

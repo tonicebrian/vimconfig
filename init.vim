@@ -119,7 +119,7 @@ set completeopt+=longest
 
 " Remaps
 :nnoremap <F9> :NERDTree<cr>
-:nnoremap <F10> :NERDTreeClose<cr>
+:nnoremap <F8> :NERDTreeClose<cr>
 :tnoremap <Esc> <C-\><C-n>
 
 
@@ -249,10 +249,6 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 " Don't autofold code
 let g:pymode_folding = 0
 
-
-" Shortcuts
-nmap <F8> :TagbarToggle<CR>
-nmap <F9> :NERDTree<CR>
 
 set textwidth=80
 
